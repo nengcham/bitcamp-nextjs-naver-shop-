@@ -1,6 +1,12 @@
+import AppLayout from "../containers/AppLayout";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const App = ({ Component }) => {
+  return (
+    <>
+      <AppLayout />
+      <Component />
+    </>
+  );
+};
 
-export default MyApp
+export default App;

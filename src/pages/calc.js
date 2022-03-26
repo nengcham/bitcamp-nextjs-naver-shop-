@@ -1,6 +1,4 @@
 import React, { useState } from "react"
-import { memberCalc } from "../api"
-import Layout from "../containers/Layout"
 
 export default function Calc(){
     const [inputs, setInputs] = useState({})
@@ -9,17 +7,27 @@ export default function Calc(){
 
     const handleChange = (e) => {
         e.preventDefault()
-        const {value, name} = e.target;
+        const { value, name } = e.target
         setInputs({
-            ...inputs, [name]: value
+            ...inputs,
+            [name]: value
         })
     }
-
+    
     const handleClick = (e) => {
         e.preventDefault()
-        memberCalc({num1, num2, opcode})
-        .then(res => setResult(res.data))
-        .catch(err => console.log(`에러발생: ${err}`))  
+        switch(opcode){
+            case "+" :
+                return setResult(Number(num1) + Number(num2))
+            case "-" :
+                return setResult(Number(num1) - Number(num2))
+            case "*" :
+                return setResult(Number(num1) * Number(num2))
+            case "/" :
+                return setResult(Number(num1) / Number(num2))
+            case "%" :
+                return setResult(Number(num1) % Number(num2))
+        }
     }
 
     return <>
@@ -41,7 +49,7 @@ export default function Calc(){
         <input type="text" name="num2" onChange={handleChange}/><br />
         <button onClick={handleClick}>계산!</button>
         </form>
-        <div>결과: {result}</div>
+        <div>결과:{num1}{opcode}{num2} = {result}</div>
         
     </>
 }
