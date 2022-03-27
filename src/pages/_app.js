@@ -1,12 +1,11 @@
-import AppLayout from "../containers/AppLayout";
+import {Layout} from "../components/index";
 
-const App = ({ Component }) => {
+function MyApp({ Component, pageProps}) {
   return (
-    <>
-      <AppLayout />
-      <Component />
-    </>
-  );
-};
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
+}
 
-export default App;
+export default MyApp

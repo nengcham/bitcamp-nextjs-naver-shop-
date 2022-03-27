@@ -1,4 +1,6 @@
-const IndexPage = () => {
-  return <div>홈</div>;
-};
-export default IndexPage;
+export default function Home() {
+  return (<>
+    <h1>HOME</h1>
+    </>
+  )
+}
